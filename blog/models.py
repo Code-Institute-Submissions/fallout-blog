@@ -44,6 +44,29 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
+        """
+        For getting the url of each individual post that is clicked on
+        """
         return reverse('blog:post_view', args=[self.slug])
 
-    
+
+class Comment(models.Model):
+    """
+    A model for allowing users to comment
+    on other people's posts aswell as comment on
+    posts themselves
+    """
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name="comments")
+    name = models.CharField(max_length=50)
+    content = models.TextField()
+    status = models.BooleanField(default=True)
+    publish = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        """
+        Meta class for showing comments byy date published
+        """
+        ordering = ("publish",)
+
+    def __str__(self):
+        return f"Comment by {self.name}"
