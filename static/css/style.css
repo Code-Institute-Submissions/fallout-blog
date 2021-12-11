@@ -29,3 +29,24 @@
 .nav-item:hover{
     transform: scale(1.1);
 }
+
+/* Footer --------------------------------------- */
+
+#foot-bar {
+    height: 6vh;
+    width: 100%;
+    overflow: hidden;
+    margin: auto;
+}
+
+#foot-text {
+    color: white;
+    margin-bottom: 14px;
+    text-align: center;
+    transition: transform .2s;
+}
+
+#foot-text:hover {
+    transform: scale(1.1);
+
+}
