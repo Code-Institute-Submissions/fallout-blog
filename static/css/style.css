@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arimo', sans-serif;
+}
+
+/*Navigation Bar --------------------------*/
+
+.search-btn{
+    color: gray;
+    background-color: whitesmoke;
+    border: 1px solid black;
+    transition: transform .4s;
+}
+
+.search-btn:hover{
+    color: black;
+    transform: scale(1.1);
+}
+
+.navbar-brand,
+.nav-item{
+    margin-left: 5px;
+    transition: transform .4s;
+}
+
+.navbar-brand:hover,
+.nav-item:hover{
+    transform: scale(1.1);
+}
