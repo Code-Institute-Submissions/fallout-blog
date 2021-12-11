@@ -1,3 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<title>{% block title %}| {{ post.title }}{% endblock %} </title>
 
 
 {{ post.content }}
+
+{% endblock %}
