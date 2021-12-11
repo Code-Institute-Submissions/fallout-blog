@@ -20,7 +20,7 @@
         <div class="row justify-content-md-center">
             {% for post in posts %}
                 <div class="col-md-4">
-                    {{ post.title }}
+                  <a href="{{ post.get_absolute_url }}">  {{ post.title }}</a>
                     {{ post.author }}
                     {{ post.content }}
                 </div>

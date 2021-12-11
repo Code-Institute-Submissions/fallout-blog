@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.urls import reverse
 
 
 class Post(models.Model):
@@ -10,10 +10,15 @@ class Post(models.Model):
     """
 
     class Status(models.Manager):
+        """
+        Class to filer status and show only published posts
+        on webpage
+        """
         def get_queryset(self):
+            """
+            Function for returning only published posts
+            """
             return super().get_queryset().filter(status='published')
-
-
 
     STATUS = (
         ('draft', 'Draft'),
@@ -30,7 +35,15 @@ class Post(models.Model):
     new_status = Status()
 
     class Meta:
+        """
+        Magic Meta class for showing posts by newest first
+        """
         ordering = ['-posted']
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('blog:post_view', args=[self.slug])
+
+    
