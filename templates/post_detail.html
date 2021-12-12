@@ -4,7 +4,27 @@
 
 <title>{% block title %}| {{ post.title }}{% endblock %} </title>
 
+{{ post.title }}
+{{ post.content|safe }}
 
-{{ post.content }}
+<div>
+    {% with comments.count as total_comments %}
+    {{ total_comments }} Comment {{ total_comments }}
+</div>
+    {% endwith %}
+    {% for comment in comments %}
+    Comment {{ forloop.counter }} by {{ comment.name }}
+    {{ comment.content }}
+    on {{ comment.publish }}
+    {% empty %}
+    No Comments Yet!
+    {% endfor %}
+    <h1>Add Comment</h1>
+    <form id="commentform" method="post">
 
+        {{ comment_form.as_p }}
+        {% csrf_token %}
+        <button type="submit">Submit</button>
+
+    </form>
 {% endblock %}
