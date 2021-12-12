@@ -50,5 +50,8 @@ I checkout out similar websites and popular website designs and decided to go wi
 # Help 
 https://www.gitpod.io/blog/gitpodify/
 
+https://www.geeksforgeeks.org/verbose_name-django-built-in-field-validation/
+
+https://docs.djangoproject.com/en/4.0/ref/class-based-views/
 
 

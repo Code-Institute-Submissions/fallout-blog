@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+<title>{% block title %}| Categories{% endblock %} </title>
+
+{% block content %}
+
+    <div class="container">
+        {{ catlist.cat }}
+        {% for post in catlist.posts %}
+            <a href="{{ post.get_absolute_url }}">
+                {{ post.title }}
+            </a>
+        
+        {% endfor %}
+    </div>
+
+{% endblock %}

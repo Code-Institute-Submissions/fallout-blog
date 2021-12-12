@@ -3,6 +3,15 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 
+class Categories(models.Model):
+    """
+    Model for creating categories
+    """
+    name = models.CharField(max_length=80)
+
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     """
     A model for creating a table where posts will be written
@@ -27,6 +36,7 @@ class Post(models.Model):
 
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique_for_date='posted')
+    category = models.ForeignKey(Categories, on_delete=models.PROTECT, verbose_name="Categories", default=1)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
     posted = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
@@ -70,3 +80,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.name}"
+
+
