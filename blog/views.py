@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
-from .models import Post
+from .models import Post, Categories
 from .forms import CommentForm
 from django.views.generic import ListView
+
 
 def HomeView(request):
     """
@@ -33,6 +34,9 @@ def Post_View(request, post):
 
 
 class CategoryView(ListView):
+    """
+    A view for displaying posts by their categories
+    """
     template_name = 'categories.html'
     context_object_name = 'catlist'
 
@@ -42,4 +46,12 @@ class CategoryView(ListView):
             'posts': Post.objects.filter(category__name=self.kwargs['category']).filter(status='published')
         }
         return content
+
+
+def CategoryListView(request):
+    CategoryListView = Categories.objects.all()
+    context = {
+        'CategoryListView': CategoryListView,
+    }
+    return context
 
