@@ -38,7 +38,8 @@ pillow
 First I installed the initial items I would need, once I did that I created the project and the app for this workspace.  
 I went straight to the models.py page as I wanted to write my post model for the project so I could access it from the admin side of the website.  
 I then wrote a couple of test posts in the back end, one was set to published and the other was draft, This was so I could set up only showing the published posts to users. I then created a simple view for the homepage, created a index and base.html, and everything up with a url.  
-I used bootstrap, google fonts and fontawesome on the base.html page and extended it's use across all webpages. Using these features allowed me to to use custom fonts, icons and a whole range of bootstrap html and css. I also created my own style.css file in the static folder, This allowed me to edit and style code to my liking. 
+I used bootstrap, google fonts and fontawesome on the base.html page and extended it's use across all webpages. Using these features allowed me to to use custom fonts, icons and a whole range of bootstrap html and css. I also created my own style.css file in the static folder, This allowed me to edit and style code to my liking.  
+Creating the Comment model allowed me to add comments to posts, I first added it to the admin section of the website and wrote some posts from the back end, once it was working in the back end, I wrote the view for the comments and built a form for commenting, then I added it to the post_detail.html page. From there users are now able to leave comments on posts, by just entering their name and their comment. I have also included a comment counter as it will let users know how popular a post is via the number of comments it has.
 
 <a name="style"></a>
 # Style

@@ -4,17 +4,14 @@
 
 <title>{% block title %}| {{ post.title }}{% endblock %} </title>
 
-{{ post.title }}
-{{ post.content|safe }}
 
-<div>
     {% with comments.count as total_comments %}
-    {{ total_comments }} Comment {{ total_comments }}
-</div>
+        Comment(s) {{ total_comments }} <br>
+
     {% endwith %}
     {% for comment in comments %}
-    Comment {{ forloop.counter }} by {{ comment.name }}
-    {{ comment.content }}
+    Comment by {{ comment.name }}<br>
+    {{ comment.content }}<br>
     on {{ comment.publish }}
     {% empty %}
     No Comments Yet!
