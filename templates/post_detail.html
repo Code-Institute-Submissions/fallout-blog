@@ -4,10 +4,24 @@
 
 <title>{% block title %}| {{ post.title }}{% endblock %} </title>
 
-    {{ post.title }}
-    {{ post.author }}
-    {{ post.content }}
+<div class="container">
+        {% if "placeholder" in post.image.url %}
+        <img class="detail-image" src="https://res.cloudinary.com/benaldo66/image/upload/v1638847259/fallout/vault1_rllpia.jpg" alt="Default Post Image">
+        {% else %}
+        <img class="detail-image" src="{{ post.image.url }}" alt="Post Image">
+        {% endif %}
 
+    <div class="text-center">
+        {{ post.title|title }} <br>
+            Written By: {{ post.author|title }} <br>
+        {{ post.content|safe }} <br>
+        <a href="/">Home</a>
+        <br>
+    </div>
+
+</div>
+
+<div class="container">
     {% with all_comments.count as total_comments %}
         Comment(s) {{ total_comments }} <br>
 
@@ -21,12 +35,31 @@
     {% endfor %}
     <h1>Add Comment</h1>
     <form id="commentform" method="post">
-
         {{ comment_form.as_p }}
         {% csrf_token %}
         <button type="submit">Submit</button>
-
     </form>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+
+</div>
 
 
 {% endblock %}

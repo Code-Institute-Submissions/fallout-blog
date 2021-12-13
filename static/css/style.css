@@ -52,7 +52,7 @@
 }
 
 
-/* Styles For Homepage Card View */
+/* Styles For Homepage Card View ------------------------- */
 
 .card-img-top {
     height: 200px;
@@ -71,4 +71,20 @@
 .title-link:hover {
     text-decoration: underline 1px black;
     color: black;
+}
+
+
+/* Post_Detail Styles ------------------------ */
+
+.detail-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 30%;
+    width: 25%;
+    margin-top: 25px;
+}
+
+#commentform {
+    width: 40%;
 }

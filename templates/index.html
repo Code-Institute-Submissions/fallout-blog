@@ -24,6 +24,7 @@
 
             <a href="{{ post.get_absolute_url }}" class="btn btn-primary post-button">View Post</a>
             <p class="card-text text-center"> <small>{{ post.author|title }} <br>  {{ post.posted }}</small></p>
+            <p>{{ post.category|title }}</p>
             </div>
         </div>
     {% endfor %}

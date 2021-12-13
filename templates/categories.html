@@ -5,12 +5,12 @@
 {% block content %}
 
     <div class="container">
-        {{ catlist.cat }}
+        {{ catlist.cat|title }}<br>
         {% for post in catlist.posts %}
             <a href="{{ post.get_absolute_url }}">
-                {{ post.title }}
+                {{ post.title|title }}
             </a>
-        
+
         {% endfor %}
     </div>
 
