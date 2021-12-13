@@ -5,16 +5,21 @@
     <title>{% block title %}| Search{% endblock %} </title>
 
     {% if q %}
-    <h1>Here Are The Post(s) You Wanted {{ q }}</h1>
     <p>
         {% with results.count as total_results %}
         Found {{ total_results }} result(s)
         {% endwith %}
     </p>
-    {% endif %}
-    <form method="get">
-        {{ form.as_p }}
-        <input type="submit" value="Search">
-    </form>
 
+    {% for post in results %}
+    <h3><a href="{{ post.get_absolute_url }}">{{ post.title|title }}</a></h3>
+    {% empty %}
+    <p>No Matching Posts</p>
+    {% endfor %}
+    {% else %}
+        <form method="get">
+            {{ form.as_p }}
+            <input type="submit" value="Search">
+        </form>
+    {% endif %}
 {% endblock %}
