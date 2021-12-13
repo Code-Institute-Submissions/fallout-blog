@@ -50,3 +50,25 @@
     transform: scale(1.1);
 
 }
+
+
+/* Styles For Homepage Card View */
+
+.card-img-top {
+    height: 200px;
+    margin: 2px;
+}
+
+.post-button {
+    display: block;
+}
+
+.title-link {
+    text-decoration: none;
+    color: black;
+}
+
+.title-link:hover {
+    text-decoration: underline 1px black;
+    color: black;
+}

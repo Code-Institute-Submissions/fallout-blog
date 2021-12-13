@@ -4,21 +4,31 @@
 
 <title>{% block title %}| Home{% endblock %} </title>
 
+
+<div class="album p-4 bg-light">
     <div class="container">
-        <div class="row justify-content-md-center">
-            {% for post in posts %}
-                <div class="col-md-4">
-                  <a href="{{ post.get_absolute_url }}">  {{ post.title }}</a>
-                    {{ post.author }}
-                    {{ post.content|slice:100|safe}} ...
-                    {% if "placeholder" in post.image.url %}
-                    <img class="card-img-top" src="https://res.cloudinary.com/benaldo66/image/upload/v1638847259/fallout/vault1_rllpia.jpg" alt="" style="width:80%">
-                    {% else %}
-                    <img class="card-img-top" src="{{ post.image.url }}" alt="">
-                    {% endif %}
-                </div>
-            {% endfor %}
+      <div class="row">
+    {% for post in posts %}
+        <div class="card col-md-4" style="width: 18rem;">
+            <a class="title-link" href="{{ post.get_absolute_url }}">
+                {% if "placeholder" in post.image.url %}
+                <img class="card-img-top" src="https://res.cloudinary.com/benaldo66/image/upload/v1638847259/fallout/vault1_rllpia.jpg" alt="Default Post Image" style="width:100%">
+                {% else %}
+                <img class="card-img-top" src="{{ post.image.url }}" alt="Post Image" style="width:100%">
+                {% endif %}
+
+                <div class="card-body">
+                <h5 class="card-title text-center">{{ post.title|title }}</h5>
+            </a>
+            <p class="card-text">{{ post.content|safe|slice:100 }}...</p>
+
+            <a href="{{ post.get_absolute_url }}" class="btn btn-primary post-button">View Post</a>
+            <p class="card-text text-center"> <small>{{ post.author|title }} <br>  {{ post.posted }}</small></p>
+            </div>
         </div>
+    {% endfor %}
+      </div>
     </div>
+      
 
     {% endblock %}
