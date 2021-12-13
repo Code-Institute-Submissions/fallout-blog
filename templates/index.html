@@ -11,6 +11,11 @@
                   <a href="{{ post.get_absolute_url }}">  {{ post.title }}</a>
                     {{ post.author }}
                     {{ post.content|slice:100|safe}} ...
+                    {% if "placeholder" in post.image.url %}
+                    <img class="card-img-top" src="https://res.cloudinary.com/benaldo66/image/upload/v1638847259/fallout/vault1_rllpia.jpg" alt="" style="width:80%">
+                    {% else %}
+                    <img class="card-img-top" src="{{ post.image.url }}" alt="">
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>

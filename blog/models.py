@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
+from cloudinary.models import CloudinaryField
 
 
 class Categories(models.Model):
@@ -11,6 +12,7 @@ class Categories(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Post(models.Model):
     """
@@ -40,6 +42,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='blog_posts')
     posted = models.DateTimeField(auto_now_add=True)
     content = models.TextField()
+    image = CloudinaryField('media/', default='placeholder')
     status = models.CharField(max_length=10, choices=STATUS, default='draft')
     objects = models.Manager()
     new_status = Status()
@@ -80,5 +83,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.name}"
-
-

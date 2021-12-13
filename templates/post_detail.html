@@ -4,6 +4,9 @@
 
 <title>{% block title %}| {{ post.title }}{% endblock %} </title>
 
+    {{ post.title }}
+    {{ post.author }}
+    {{ post.content }}
 
     {% with comments.count as total_comments %}
         Comment(s) {{ total_comments }} <br>
