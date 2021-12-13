@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .models import Post, Categories
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 from django.views.generic import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -61,8 +61,27 @@ class CategoryView(ListView):
 
 
 def CategoryListView(request):
+    """
+    A view for showing all of the cateogories 
+    in the category list created in the admin section
+    """
     CategoryListView = Categories.objects.all()
     context = {
         'CategoryListView': CategoryListView,
     }
     return context
+
+
+def SearchView(request):
+    """ A view for using the search bar in the navbar"""
+    form = PostForm()
+    q = ''
+    results = []
+
+    if 'q' in request.GET:
+        form = PostForm(request.GET)
+        if form.is_valid():
+            q = form.cleaned_data['q']
+            results = Post.objects.filter(title__contains=q)
+    return render(request, 'nav_search.html', {'form': form, 'q': q, 'results': results, })
+

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <title>{% block title %}| Search{% endblock %} </title>
+
+    {% if q %}
+    <h1>Here Are The Post(s) You Wanted {{ q }}</h1>
+    <p>
+        {% with results.count as total_results %}
+        Found {{ total_results }} result(s)
+        {% endwith %}
+    </p>
+    {% endif %}
+    <form method="get">
+        {{ form.as_p }}
+        <input type="submit" value="Search">
+    </form>
+
+{% endblock %}
