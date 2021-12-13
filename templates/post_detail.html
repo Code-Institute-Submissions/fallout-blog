@@ -8,7 +8,7 @@
     {{ post.author }}
     {{ post.content }}
 
-    {% with comments.count as total_comments %}
+    {% with all_comments.count as total_comments %}
         Comment(s) {{ total_comments }} <br>
 
     {% endwith %}
@@ -27,4 +27,6 @@
         <button type="submit">Submit</button>
 
     </form>
+
+
 {% endblock %}

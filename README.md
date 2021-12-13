@@ -55,4 +55,4 @@ https://www.geeksforgeeks.org/verbose_name-django-built-in-field-validation/
 
 https://docs.djangoproject.com/en/4.0/ref/class-based-views/
 
-
+https://docs.djangoproject.com/en/3.2/topics/pagination/

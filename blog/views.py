@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from .models import Post, Categories
 from .forms import CommentForm
 from django.views.generic import ListView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def HomeView(request):
@@ -18,7 +19,18 @@ def Post_View(request, post):
     A view for looking at the details of a blog post
     """
     post = get_object_or_404(Post, slug=post, status='published')
-    comments = post.comments.filter(status=True)
+    all_comments = post.comments.filter(status=True)
+
+    page = request.GET.get('page', 1)
+    paginator = Paginator(all_comments, 6)
+
+    try:
+        comments = paginator.page(page)
+    except PageNotAnInteger:
+        comments = paginator.page(1)
+    except EmptyPage:
+        comments = paginator.page(paginator.number_pages)
+
     user_comment = None
 
     if request.method == 'POST':
@@ -30,7 +42,7 @@ def Post_View(request, post):
             return HttpResponseRedirect('/' + post.slug)
     else:
         comment_form = CommentForm()
-    return render(request, 'post_detail.html', {'post': post, 'comments': comments, 'comment_form': comment_form, })
+    return render(request, 'post_detail.html', {'post': post, 'comments': comments, 'comment_form': comment_form, 'all_comments': all_comments, })
 
 
 class CategoryView(ListView):
@@ -54,4 +66,3 @@ def CategoryListView(request):
         'CategoryListView': CategoryListView,
     }
     return context
-
