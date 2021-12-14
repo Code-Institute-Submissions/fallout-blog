@@ -31,7 +31,7 @@ gunicorn
 dj_database_url  
 psycopg2  
 dj3-cloudinary-storage  
-pillow
+pillow  
 django-allauth
 
 <a name="steps"></a>
@@ -42,19 +42,21 @@ I then wrote a couple of test posts in the back end, one was set to published an
 I used bootstrap, google fonts and fontawesome on the base.html page and extended it's use across all webpages. Using these features allowed me to to use custom fonts, icons and a whole range of bootstrap html and css. I also created my own style.css file in the static folder, This allowed me to edit and style code to my liking.  
 Creating the Comment model allowed me to add comments to posts, I first added it to the admin section of the website and wrote some posts from the back end, once it was working in the back end, I wrote the view for the comments and built a form for commenting, then I added it to the post_detail.html page. From there users are now able to leave comments on posts, by just entering their name and their comment. I have also included a comment counter as it will let users know how popular a post is via the number of comments it has.  
 Then it was creating catgories for the blog posts, after writing a model for categories, it was just a case of using a context processor to display the category dropdown menu across all pages on the website.  
-Once the dropdown functionality was in place I went on to adding a functional search bar to the navigation bar. To achieve this I created it's own html page so that when the user clicks search it will take them to the page with any possible matches inside. I created a view that looks for any words within the title of the page and return the results. The results page will also show users how many (if any) results were found.
+Once the dropdown functionality was in place I went on to adding a functional search bar to the navigation bar. To achieve this I created it's own html page so that when the user clicks search it will take them to the page with any possible matches inside. I created a view that looks for any words within the title of the page and return the results. The results page will also show users how many (if any) results were found.  
+I used django all auth for the account features. I created a new app named accounts to store everything to do with user accounts. Instead of following the generic forms that come with django and all auth, I decided to edit them and write them out myself. I did have some help in doing this and the code for the register form is largely taken from a source I found on stack overflow, it will be linked at the bottom of this page. 
 
 <a name="style"></a>
 # Style
 I checkout out similar websites and popular website designs and decided to go with colors similar to Facebook as I felt that it was sleek and simple without looking bare and lazy. I kept the design the same on each page to keep things the same throughout, this improves UI as it offers continuity within the project. The color scheme is blue and white. As previously mentioned, I followed Facebook's color style. I did add some smaller styles such as expanding navbar icons upon hover, highlighting items when hovering over them and styling clickable links to make sure the users know they are clickable.
 
 
-
 # Help 
-https://www.gitpod.io/blog/gitpodify/
+https://www.gitpod.io/blog/gitpodify/  
 
-https://www.geeksforgeeks.org/verbose_name-django-built-in-field-validation/
+https://www.geeksforgeeks.org/verbose_name-django-built-in-field-validation/  
 
-https://docs.djangoproject.com/en/4.0/ref/class-based-views/
+https://docs.djangoproject.com/en/4.0/ref/class-based-views/  
 
-https://docs.djangoproject.com/en/3.2/topics/pagination/
+https://docs.djangoproject.com/en/3.2/topics/pagination/  
+
+https://github.com/Benjamin-Joe/falloutblog  
