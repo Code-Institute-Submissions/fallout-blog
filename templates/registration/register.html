@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+<title>{% block title %}| Sign Up{% endblock %} </title>
+{% block content %}
+
+{% if request.user.is_authenticated %}
+<script>
+    window.location.href = '{% url "accounts:profile" %}';
+</script>
+{% endif %}
+
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="col-md-6 bg-light">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-12  mx-auto">
+                            <form class=" p-4 rounded" action="" method="post">
+                                {% csrf_token %}
+
+                                <button class="btn btn-dark btn-block py-2 mb-4 mt-5 font-weight-bold" type="submit"
+                                    value="Log-in">Sign
+                                    in</button>
+
+
+                            </form>
+                            <p class="small text-center pt-4">
+                                <a href="{% url 'password_reset' %}">Forgotten Password?</a>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 d-none d-md-flex"></div>
+    </div>
+</div>
+
+{% endblock %}
