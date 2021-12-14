@@ -88,3 +88,26 @@
 #commentform {
     width: 40%;
 }
+
+
+/* News Page -------------------------- */
+
+
+.game-img{
+    height: 120px;
+    width: 100px;
+
+}
+
+.game-img-1{
+    height: 120px;
+    width: 100px;
+}
+
+.overlook-img{
+    height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}

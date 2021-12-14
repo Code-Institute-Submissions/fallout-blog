@@ -92,6 +92,8 @@ AUTHENTICATION_BACKENDS = [
 
 ]
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 SITE_ID = 1
 
 WSGI_APPLICATION = 'fallout.wsgi.application'
@@ -166,3 +168,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'accounts:profile'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+

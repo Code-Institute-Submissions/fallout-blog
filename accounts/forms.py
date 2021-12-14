@@ -62,6 +62,9 @@ class RegisterForm(forms.ModelForm):
         return email
 
     def __init__(self, *args, **kwargs):
+        """
+        Styling to registration form
+        """
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update(
             {'class': 'form-control mb-3', 'placeholder': 'Username'})

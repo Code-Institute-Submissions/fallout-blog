@@ -5,12 +5,15 @@ from django.views.generic import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
+def NewsPage(request):
+    return render(request, 'news.html')
+
+
 def HomeView(request):
     """
     A view for the homepage
     """
     posts = Post.new_status.all()
-
     return render(request, 'index.html', {'posts': posts})
 
 
@@ -84,4 +87,5 @@ def SearchView(request):
             q = form.cleaned_data['q']
             results = Post.objects.filter(title__contains=q)
     return render(request, 'nav_search.html', {'form': form, 'q': q, 'results': results, })
+
 
