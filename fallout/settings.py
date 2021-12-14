@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary',
     'blog',
-    'members',
+    'accounts',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -162,3 +162,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_REDIRECT_URL = 'accounts:profile'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
