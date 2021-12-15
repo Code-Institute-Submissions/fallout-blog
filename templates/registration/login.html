@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-<title>{% block title %}| Login{% endblock %} </title>
+{% block title %}Log-in{% endblock %}
 {% block content %}
 
 {% if request.user.is_authenticated %}
@@ -8,7 +8,6 @@
 </script>
 {% endif %}
 
-
 <div class="container-fluid">
     <div class="row no-gutter">
         <div class="col-md-6 bg-light">
@@ -16,7 +15,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-12  mx-auto">
-                            <form class=" p-4 rounded" action="{% url 'login' %}" method="post">
+
+                            <form class="account-form p-4 rounded" action="{% url 'login' %}" method="post">
+
                                 {% csrf_token %}
                                 <p class="h4 mb-4 font-weight-bold">Sign In</p>
 
@@ -36,24 +37,14 @@
                                     value="Log-in">Sign
                                     in</button>
 
-                                <p class="small font-weight-bold text-center pb-3">
-                                    <a href="#">New to Blog? Create an account</a>
-                                </p>
-
-                                <hr class="mb-3">
-
                             </form>
-                            <p class="small text-center pt-4">
-                                <a href="{% url "password_reset" %}">Forgotten Password?</a>
-                            </p>
 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 d-none d-md-flex"></div>
+        <div class="col-md-6 d-none d-md-flex bg-image"></div>
     </div>
 </div>
-
 {% endblock %}

@@ -14,47 +14,34 @@ class LoginForm(AuthenticationForm):
         attrs={'class': 'form-control', 'placeholder': 'Password', 'id': 'password-user'}))
 
 
-class RegisterForm(forms.ModelForm):
-    """
-    Registration form for new users
-    """
+class RegistrationForm(forms.ModelForm):
+
     username = forms.CharField(
-        label='Enter Username', min_length=6, help_text='Required')
-
-    email = forms.EmailField(
-        max_length=65, help_text='Required', error_messages={'required': 'We Need An Email!'})
-
+        label='Enter Username', min_length=4, max_length=50, help_text='Required')
+    email = forms.EmailField(max_length=100, help_text='Required', error_messages={
+        'required': 'Sorry, you will need an email'})
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
-
-    password2 = forms.CharField(label='Repeat Password', widget=forms.PasswordInput)
+    password2 = forms.CharField(
+        label='Repeat password', widget=forms.PasswordInput)
 
     class Meta:
         model = User
         fields = ('username', 'email', 'first_name',)
 
     def clean_username(self):
-        """
-        Ensuring users have unique username when signing up
-        """
         username = self.cleaned_data['username'].lower()
         r = User.objects.filter(username=username)
         if r.count():
-            raise ValidationError("Username Already Taken")
+            raise ValidationError("Username already exists")
         return username
 
     def clean_password2(self):
-        """
-        Checking that the first and second password inputs match up
-        """
-        cleandata = self.cleaned_data
-        if cleandata['password'] != cleandata['password2']:
+        cd = self.cleaned_data
+        if cd['password'] != cd['password2']:
             raise forms.ValidationError('Passwords do not match.')
-        return cleandata['password2']
+        return cd['password2']
 
     def clean_email(self):
-        """
-        Ensuring the username is unique for the account
-        """
         email = self.cleaned_data['email']
         if User.objects.filter(email=email).exists():
             raise forms.ValidationError(
@@ -62,9 +49,6 @@ class RegisterForm(forms.ModelForm):
         return email
 
     def __init__(self, *args, **kwargs):
-        """
-        Styling to registration form
-        """
         super().__init__(*args, **kwargs)
         self.fields['username'].widget.attrs.update(
             {'class': 'form-control mb-3', 'placeholder': 'Username'})
@@ -74,3 +58,4 @@ class RegisterForm(forms.ModelForm):
             {'class': 'form-control', 'placeholder': 'Password'})
         self.fields['password2'].widget.attrs.update(
             {'class': 'form-control', 'placeholder': 'Repeat Password'})
+
