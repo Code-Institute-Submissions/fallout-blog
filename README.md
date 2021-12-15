@@ -5,6 +5,12 @@
 2. [Steps](#steps)
 3. [Style](#style)
 
+
+# IMPORTANT!
+During the development of this project I ran into a few errors that took a few days to fix. I also have very poor time management and struggled to hit the deadline. About 60% of the project is finished, I understand that it wont be enough to pass, I will try again next time round.  
+Also as a disclaimer. Due to time restraints The majority of the accounts code was following from a tutorial linked below. It is not my code.  
+[account-section](https://www.youtube.com/watch?v=DtUBrBbGMxU&list=PLOLrQ9Pn6cawWd-5UZM6CIm0uqFXeBcTd&index=10)
+
 <a name="deployment"></a>
 # Deployment
 The first thing I did was deploy this project as it is much easier to deploy early to avoid any issues further down the line with deployment.
